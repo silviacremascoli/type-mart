@@ -1,11 +1,11 @@
 import products from "./products";
 
-let productName: string = "fanny pack";
+let productName: string = "shirt";
 let shipping: number;
 let taxPercent: number;
 let taxTotal: number;
 let total: number;
-let shippingAddress: string = "592 Five Points, 20151 Maryland";
+let shippingAddress: string = "3763 Farnum Road, 10016 New York";
 
 let product = products.filter((product) => {
   return product.name === productName;
@@ -14,7 +14,7 @@ let product = products.filter((product) => {
 function preOrder(product) {
   if (product.preOrder === true) {
     console.log(
-      `This product can be pre-ordered. We will notify you when it's on the way`
+      `This product can be pre-ordered. We will notify you when it's on the way.`
     );
   } else {
     null;
@@ -30,6 +30,15 @@ function freeShipping(product) {
   }
 }
 
+function taxNY(shippingAddress: string) {
+  if (shippingAddress.match("New York")) {
+    taxPercent = 0.1;
+  } else {
+    taxPercent = 0.05;
+  }
+}
+
 console.log(product);
 preOrder(product);
 freeShipping(product);
+taxNY(shippingAddress);
